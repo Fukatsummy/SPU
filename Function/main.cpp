@@ -1,7 +1,7 @@
-#include<iostream>
+п»ї#include<iostream>
 using  namespace std;
 
-int Add(int a, int b);//Прототип фукнции(объявление функции)
+int Add(int a, int b);//РџСЂРѕС‚РѕС‚РёРї С„СѓРєРЅС†РёРё(РѕР±СЉСЏРІР»РµРЅРёРµ С„СѓРЅРєС†РёРё)
 int Sub(int a, int b);//Function declaration
 int Mul(int a, int b);
 double Div(int a, int b);
@@ -10,19 +10,19 @@ void main()
 {
 	setlocale(LC_ALL, "");
 	int a, b;
-	cout << "Введите два числа: "; cin >> a >> b;
-	int  c = Add(a, b);//вызов функции - Function call
+	cout << "Р’РІРµРґРёС‚Рµ РґРІР° С‡РёСЃР»Р°: "; cin >> a >> b;
+	int  c = Add(a, b);//РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё - Function call
 	cout << a << "+" << b << "=" << c << endl;
 	cout << a << "-" << b << "=" << Sub(a,b) << endl;
 	cout << a << "*" << b << "=" << Mul(a,b) << endl;
 	cout << a << "/" << b << "=" << Div(a,b) << endl;
 }
-int Add(int a, int b)//Реализация функции(определение функции)
-{//сложение//Function defenition
+int Add(int a, int b)//Р РµР°Р»РёР·Р°С†РёСЏ С„СѓРЅРєС†РёРё(РѕРїСЂРµРґРµР»РµРЅРёРµ С„СѓРЅРєС†РёРё)
+{//СЃР»РѕР¶РµРЅРёРµ//Function defenition
 	int c = a + b;
 	return c;
 }
-int Sub(int a, int b)//вычитание
+int Sub(int a, int b)//РІС‹С‡РёС‚Р°РЅРёРµ
 {
 	return a - b;
 }

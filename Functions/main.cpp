@@ -3,12 +3,25 @@ using namespace std;
 #define delimiter "\n-----------------------------------------------------------\n"
 
 void FillRand(int arr[], const int n);
+void FillRand(double arr[], const int n);
+
 void Print(int arr[], const int n);
+void Print(double arr[], const int n);
+
 void Sort(int arr[], const int n);
+void Sort(double arr[], const int n);
+
 int Sum(int arr[], const int n);
+double Sum(double arr[], const int n);
+
 double Avg(int arr[], const int n);
+double Avg(double arr[], const int n);
+
 int minValueIn(int arr[], const int n);
+double minValueIn(double arr[], const int n);
+
 int maxValueIn(int arr[], const int n);
+double maxValueIn(double arr[], const int n);
 
 
 void main()
@@ -26,11 +39,11 @@ void main()
 	cout << "Среднее арифметическое: " << Avg(arr, n) << endl;
 	cout << "Минимальное значение: " << minValueIn(arr, n) << endl;
 	cout << "Максимальное значение: " << maxValueIn(arr, n) << endl;
-	
+
 	cout << delimiter << endl;
 
 	const int m = 8;
-	int brr[m];
+	double brr[m];
 	//int minRand, maxRand;
 	FillRand(brr, m);
 	Print(brr, m);
@@ -40,7 +53,6 @@ void main()
 	cout << "Среднее арифметическое: " << Avg(brr, m) << endl;
 	cout << "Минимальное значение: " << minValueIn(brr, m) << endl;
 	cout << "Максимальное значение: " << maxValueIn(brr, m) << endl;
-
 }
 void FillRand(int arr[], const int n)
 {
@@ -49,7 +61,23 @@ void FillRand(int arr[], const int n)
 		arr[i] = rand() % 100;
 	}
 }
+void FillRand(double arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = rand() % 10000;
+		arr[i] /= 100;
+	}
+}
 void Print(int arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << "\t";
+	}
+	cout << endl;
+}
+void Print(double arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -72,34 +100,80 @@ void Sort(int arr[], const int n)
 		}
 	}
 }
-	int Sum(int arr[], const int n)
+void Sort(double arr[], const int n)
+{
+	for (int i = 0; i < n; i++)//выбирает элемент
 	{
-		int sum = 0;
-		for (int i = 0; i < n; i++)
+		for (int j = i + 1; j < n; j++)//перебирает элемент
 		{
-			sum += arr[i];
+			if (arr[j] < arr[i])
+			{
+				double buffer = arr[i];
+				arr[i] = arr[j];
+				arr[j] = buffer;
+			}
 		}
-		return sum;
 	}
-	double Avg(int arr[], const int n)
+}
+int Sum(int arr[], const int n)
+{
+	int sum = 0;
+	for (int i = 0; i < n; i++)
 	{
-		return (double)Sum(arr, n) / n;
+		sum += arr[i];
 	}
-	int minValueIn(int arr[], const int n)
+	return sum;
+}
+double Sum(double arr[], const int n)
+{
+	double sum = 0;
+	for (int i = 0; i < n; i++)
 	{
-		int min = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (arr[i] < min)min = arr[i];
-		}
-		return min;
+		sum += arr[i];
 	}
-	int maxValueIn(int arr[], const int n)
+	return sum;
+}
+double Avg(int arr[], const int n)
+{
+	return (double)Sum(arr, n) / n;
+}
+double Avg(double arr[], const int n)
+{
+	return (double)Sum(arr, n) / n;
+}
+int minValueIn(int arr[], const int n)
+{
+	int min = arr[0];
+	for (int i = 0; i < n; i++)
 	{
-		int max = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (arr[i] > max)max = arr[i];
-		}
-		return max;
+		if (arr[i] < min)min = arr[i];
 	}
+	return min;
+}
+double minValueIn(double arr[], const int n)
+{
+	double min = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] < min)min = arr[i];
+	}
+	return min;
+}
+int maxValueIn(int arr[], const int n)
+{
+	int max = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] > max)max = arr[i];
+	}
+	return max;
+}
+double maxValueIn(double arr[], const int n)
+{
+	double max = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] > max)max = arr[i];
+	}
+	return max;
+}

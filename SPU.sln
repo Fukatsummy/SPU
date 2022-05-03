@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SPU", "SPU\SPU.vcxproj", "{
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Function", "Function\Function.vcxproj", "{1B629E6E-A2C0-4538-B557-E86AC2F40CC1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Functions", "Functions\Functions.vcxproj", "{72E7A1B7-4EF5-40D9-9E7C-F42626677609}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{1B629E6E-A2C0-4538-B557-E86AC2F40CC1}.Release|x64.Build.0 = Release|x64
 		{1B629E6E-A2C0-4538-B557-E86AC2F40CC1}.Release|x86.ActiveCfg = Release|Win32
 		{1B629E6E-A2C0-4538-B557-E86AC2F40CC1}.Release|x86.Build.0 = Release|Win32
+		{72E7A1B7-4EF5-40D9-9E7C-F42626677609}.Debug|x64.ActiveCfg = Debug|x64
+		{72E7A1B7-4EF5-40D9-9E7C-F42626677609}.Debug|x64.Build.0 = Debug|x64
+		{72E7A1B7-4EF5-40D9-9E7C-F42626677609}.Debug|x86.ActiveCfg = Debug|Win32
+		{72E7A1B7-4EF5-40D9-9E7C-F42626677609}.Debug|x86.Build.0 = Debug|Win32
+		{72E7A1B7-4EF5-40D9-9E7C-F42626677609}.Release|x64.ActiveCfg = Release|x64
+		{72E7A1B7-4EF5-40D9-9E7C-F42626677609}.Release|x64.Build.0 = Release|x64
+		{72E7A1B7-4EF5-40D9-9E7C-F42626677609}.Release|x86.ActiveCfg = Release|Win32
+		{72E7A1B7-4EF5-40D9-9E7C-F42626677609}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -69,6 +69,7 @@ void FillRand(double arr[], const int n)
 		arr[i] /= 100;
 	}
 }
+
 void Print(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
@@ -85,6 +86,7 @@ void Print(double arr[], const int n)
 	}
 	cout << endl;
 }
+
 void Sort(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)//выбирает элемент
@@ -115,6 +117,7 @@ void Sort(double arr[], const int n)
 		}
 	}
 }
+
 int Sum(int arr[], const int n)
 {
 	int sum = 0;
@@ -133,6 +136,7 @@ double Sum(double arr[], const int n)
 	}
 	return sum;
 }
+
 double Avg(int arr[], const int n)
 {
 	return (double)Sum(arr, n) / n;
@@ -141,6 +145,7 @@ double Avg(double arr[], const int n)
 {
 	return (double)Sum(arr, n) / n;
 }
+
 int minValueIn(int arr[], const int n)
 {
 	int min = arr[0];
@@ -159,6 +164,7 @@ double minValueIn(double arr[], const int n)
 	}
 	return min;
 }
+
 int maxValueIn(int arr[], const int n)
 {
 	int max = arr[0];

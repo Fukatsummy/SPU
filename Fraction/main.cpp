@@ -95,6 +95,13 @@ public:
 		return *this = *this*other;
 
 	}
+	Fraction& operator()(int integer, int numerator, int denominator)
+	{
+		set_integer(integer);
+		set_numerator(numerator);
+		set_denominator(denominator);
+		return *this;
+	}
 	//        Increment/Decrement
 	Fraction& operator++()
 	{
@@ -106,6 +113,15 @@ public:
 		Fraction old = *this;
 		integer++;
 		return old;
+	}
+	//          Type - cast operators :
+	explicit operator int()const
+	{
+		return integer;
+	}
+	operator double()const
+	{
+		return integer + (double)numerator / denominator;
 	}
 
 	//        METODS
@@ -144,6 +160,7 @@ public:
 	}
 };
 
+
 Fraction operator*( Fraction left, Fraction right)
 {
 	left.to_improper();
@@ -167,13 +184,97 @@ Fraction operator /(const Fraction& left, const Fraction& right)
 {
 	return left * right.inverted();
 }
+bool operator==(Fraction left, Fraction right)
+{
+	//left.to_improper();
+	//right.to_improper();
+	//return left.get_numerator()*right.get_denominator() == right.get_numerator()*left.get_denominator();
+	return left == right;
+}
+bool operator!=(const Fraction&left, const Fraction& right)
+{
+	return (left == right);
+}
+bool operator>(Fraction left,Fraction right)
+{
+	left.to_improper();
+	right.to_improper();
+	return
+		left.get_numerator()*right.get_denominator() >
+		right.get_numerator()*left.get_denominator();
+	//return (double)left > right;
+}
+bool operator<(Fraction left, Fraction right)
+{
+	left.to_improper();
+	right.to_improper();
+	return
+		left.get_numerator()*right.get_denominator() <
+		right.get_numerator()*left.get_denominator();
+}
+bool operator>=(const Fraction&left, const Fraction& right)
+{
+	//return left > right || left == right;
+	return!(left < right);
+}
+bool operator<=(const Fraction&left, const Fraction& right)
+{
+	return left < right || left == right;
+}
+std::ostream& operator<<(std::ostream& os, const Fraction& obj)
+{
+	if (obj.get_integer())os << obj.get_integer();
+	if (obj.get_numerator())
+	{
+		if (obj.get_integer())cout << "(";
+		cout << obj.get_numerator() << "/" << obj.get_denominator();
+		if (obj.get_integer())cout << ")";
+	}
+	if (!obj.get_integer() && !obj.get_numerator())cout << 0;
+	return os;
+}
+std::istream& operator>>(std::istream& is,  Fraction& obj)
+{
+	/*int integer, numerator, denominator;
+	cin >> integer >> numerator >> denominator;
+	obj(integer, numerator, denominator);*/
+	const int SIZE = 256;
+	char sz_buffer[SIZE]{};
+	//cin >> sz_buffer;
+	is.getline(sz_buffer, SIZE);
+	char* sz_numbers[3] = {};
+	char sz_delimiters[] = "() /";
+	int n = 0;//»ндек элементов в массиве с подстроками(токенами) sz_numbers
+	for (char* pch = strtok(sz_buffer, sz_delimiters); pch; pch = strtok(NULL, sz_delimiters))
+	{
+		sz_numbers[n++] = pch;
+	}
+	//for (int i = 0; i < n; i++)cout << sz_numbers[i] << "\t"; cout << endl;
+	obj = Fraction();
+	switch (n)
+	{
+	case 1: obj.set_integer(atoi(sz_numbers[0])); break;
+	case 2: 
+		obj.set_numerator(atoi(sz_numbers[0]));
+		obj.set_denominator(atoi(sz_numbers[1])); break;
+	case 3:
+		obj(atoi(sz_numbers[0]),atoi(sz_numbers[1]),atoi(sz_numbers[2]));
+	}
+
+	return is;
+}
 
 //#define CONSTRUCTORS_CHECK
+//#define ARITHETICAL
+//define COMPARISON
+//#define CONVERSION_TO_CLASS_TO_OTHER
+
 
 void main()
 {
-#ifdef CONSTRUCTORS_CHECK
 	setlocale(LC_ALL, "");
+#ifdef CONSTRUCTORS_CHECK
+	
 	Fraction A;
 	A.print();
 
@@ -194,6 +295,7 @@ void main()
 	F.print();
 #endif // CONSTRUCTORS_CHECK
 
+#ifdef ARITHETICAL
 	Fraction A(2, 3, 4);
 	A.print();
 	/*A.to_improper();
@@ -214,4 +316,27 @@ void main()
 	{
 		i.print();
 	}
+#endif // ARITHETICAL
+#ifdef COMPARISON
+
+	cout << (Fraction(1, 2) >= Fraction(5, 11)) << endl;
+#endif // COMPARISON
+
+#ifdef CONVERSION_TO_CLASS_TO_OTHER
+	Fraction C(1, 2);
+	cout << C << endl;
+
+	Fraction A(2, 3, 4);
+	int a = (int)A;
+	cout << a << endl;
+	double b = A;
+	cout << b << endl;
+
+	cout << (Fraction(1, 2) == Fraction(5, 11)) << endl;
+#endif // CONVERSION_TO_CLASS_TO_OTHER
+
+	Fraction A;
+	cout << "¬ведите простую дробь: "; cin >> A;
+	cout << A << endl;
+
 }
